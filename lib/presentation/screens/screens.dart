@@ -1,2 +1,2 @@
-export "movies/home_screen.dart";
+export "movies/home.screen.dart";
 
