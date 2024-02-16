@@ -1,5 +1,5 @@
-class MovieDBModel {
-  MovieDBModel({
+class MovieModel {
+  MovieModel({
     required this.adult,
     required this.backdropPath,
     required this.genreIds,
@@ -31,7 +31,7 @@ class MovieDBModel {
   final double voteAverage;
   final int voteCount;
 
-  factory MovieDBModel.fromJson(Map<String, dynamic> json) => MovieDBModel(
+  factory MovieModel.fromJson(Map<String, dynamic> json) => MovieModel(
     adult: json["adult"] ?? false,
     backdropPath: json["backdrop_path"] ?? '',
     genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
