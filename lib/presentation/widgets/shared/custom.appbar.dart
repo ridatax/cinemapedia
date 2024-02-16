@@ -10,6 +10,7 @@ class CustomAppBar extends StatelessWidget {
     final titleStyle = Theme.of(context).textTheme.titleMedium;
 
     return SafeArea(
+        bottom: false,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: SizedBox(
@@ -18,7 +19,9 @@ class CustomAppBar extends StatelessWidget {
               children: [
                 Icon(Icons.movie_outlined, color: colors.primary),
                 const SizedBox(width: 5),
-                Text(Environment.APP_NAME, style: titleStyle)
+                Text(Environment.APP_NAME, style: titleStyle),
+                const Spacer(),
+                IconButton(onPressed: () {}, icon: const Icon(Icons.search))
               ],
             ),
           ),

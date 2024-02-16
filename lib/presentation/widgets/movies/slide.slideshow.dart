@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:cinemapedia/domain/entities/entities.dart';
 
-class Slide extends StatelessWidget {
-  final Movie movie;
+class Slide<T extends Movie> extends StatelessWidget {
+  final T movie;
 
   const Slide({super.key, required this.movie});
 

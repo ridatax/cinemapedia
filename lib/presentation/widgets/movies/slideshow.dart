@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
-import 'package:cinemapedia/presentation/widgets/movies/slide.dart';
+import 'package:cinemapedia/presentation/widgets/movies/slide.slideshow.dart';
 import 'package:cinemapedia/domain/entities/entities.dart';
 
-class MoviesSlideShow extends StatelessWidget {
-  final List<Movie> movies;
+class SlideShow<T extends Movie> extends StatelessWidget {
+  final List<T> list;
 
-  const MoviesSlideShow({super.key, required this.movies});
+  const SlideShow({super.key, required this.list});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +26,8 @@ class MoviesSlideShow extends StatelessWidget {
               color: colors.secondary
             )
           ),
-          itemCount: movies.length,
-          itemBuilder: (context, index) => Slide(movie: movies[index])),
+          itemCount: list.length,
+          itemBuilder: (context, index) => Slide(movie: list[index])),
     );
   }
 }
