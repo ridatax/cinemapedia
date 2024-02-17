@@ -1,4 +1,3 @@
-import 'package:cinemapedia/config/constants/environment.dart';
 import 'package:cinemapedia/domain/entities/entities.dart';
 import 'package:cinemapedia/infraestructure/models/moviedb/movie.details.dart';
 import 'package:cinemapedia/infraestructure/models/moviedb/movie.model.dart';
@@ -17,8 +16,8 @@ class MovieMapper {
       popularity: movie.popularity,
       posterPath: (movie.posterPath != '')
           ? 'https://image.tmdb.org/t/p/w500${movie.posterPath}'
-          : Environment.EMPTY,
-      releaseDate: movie.releaseDate,
+          : 'https://www.movienewz.com/img/films/poster-holder.jpg',
+      releaseDate: movie.releaseDate != null ? movie.releaseDate! : DateTime.now(),
       title: movie.title,
       video: movie.video,
       voteAverage: movie.voteAverage,

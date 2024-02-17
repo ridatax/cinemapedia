@@ -4,16 +4,16 @@ import 'package:cinemapedia/domain/entities/entities.dart';
 
 class Slide<T extends Movie> extends StatelessWidget {
   final T movie;
-
   const Slide({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).secondaryHeaderColor;
     final decoration = BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        boxShadow: const [
+        boxShadow:  [
           BoxShadow(
-              color: Colors.black45, blurRadius: 10, offset: Offset(0, 10))
+              color: colors, blurRadius: 10, offset: const Offset(0, 10))
         ]);
 
     return Padding(

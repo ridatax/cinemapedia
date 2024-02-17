@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:cinemapedia/domain/entities/entities.dart';
-import 'package:cinemapedia/presentation/widgets/movies/poster.sliver.dart';
-import 'package:cinemapedia/presentation/widgets/movies/movie.details.dart';
+import 'package:cinemapedia/presentation/widgets/widgets.dart';
 
 class MovieScreen extends ConsumerStatefulWidget {
-  static const name = 'movie-screen';
+  static const name = 'movie';
   final String movieId;
 
   const MovieScreen({super.key, required this.movieId});

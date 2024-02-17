@@ -5,12 +5,11 @@ import 'package:cinemapedia/domain/entities/entities.dart';
 
 class SlideShow<T extends Movie> extends StatelessWidget {
   final List<T> list;
-
   const SlideShow({super.key, required this.list});
 
   @override
   Widget build(BuildContext context) {
-    final colors = Theme.of(context).colorScheme;
+    final colors = Theme.of(context);
 
     return SizedBox(
       height: 210,
@@ -22,8 +21,8 @@ class SlideShow<T extends Movie> extends StatelessWidget {
           pagination: SwiperPagination(
             margin: const EdgeInsets.only(top: 0),
             builder: DotSwiperPaginationBuilder(
-              activeColor: colors.primary,
-              color: colors.secondary
+              activeColor: colors.secondaryHeaderColor,
+              color: colors.colorScheme.primaryContainer
             )
           ),
           itemCount: list.length,
