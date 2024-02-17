@@ -6,14 +6,14 @@ import 'package:cinemapedia/domain/entities/entities.dart';
 class HorizontalListView extends StatefulWidget {
   final List<Movie> movies;
   final String? title;
-  final String? subtitle;
+  final String? subTitle;
   final VoidCallback? loadNextPage;
 
   const HorizontalListView(
       {super.key,
       required this.movies,
       this.title,
-      this.subtitle,
+      this.subTitle,
       this.loadNextPage});
 
   @override
@@ -49,8 +49,8 @@ class _HorizontalListViewState extends State<HorizontalListView> {
       height: 350,
       child: Column(
         children: [
-          if (widget.title != null || widget.subtitle != null)
-            BannerTitle(title: widget.title, subtitle: widget.subtitle),
+          if (widget.title != null || widget.subTitle != null)
+            BannerTitle(title: widget.title, subtitle: widget.subTitle),
           Expanded(
             child: ListView.builder(
                 controller: scrollController,
