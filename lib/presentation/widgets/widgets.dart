@@ -1,6 +1,7 @@
 export 'shared/custom.appbar.dart';
 export 'shared/bottom.navigation.dart';
 export 'shared/full.loader.dart';
+export 'shared/custom.gradient.dart';
 export 'movies/banner.title.dart';
 export 'movies/horizontal.listview.dart';
 export 'movies/movie.details.dart';
@@ -9,4 +10,6 @@ export 'movies/poster.sliver.dart';
 export 'movies/slide.horizontal.dart';
 export 'movies/slide.slideshow.dart';
 export 'movies/slideshow.dart';
+export 'movies/favorites.masonry.dart';
+export 'movies/poster.link.dart';
 export 'actors/actors.consumer.dart';

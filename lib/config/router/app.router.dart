@@ -11,6 +11,7 @@ final appRouter = GoRouter(initialLocation: '/', routes: [
         StatefulShellBranch(routes: <RouteBase>[
           GoRoute(
               path: '/',
+              name: HomeScreen.name,
               builder: (context, state) {
                 return const HomeView();
               },
