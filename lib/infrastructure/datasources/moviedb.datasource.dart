@@ -2,13 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:cinemapedia/config/constants/environment.dart';
 import 'package:cinemapedia/domain/datasources/movies.datasource.dart';
 import 'package:cinemapedia/domain/entities/entities.dart';
-import 'package:cinemapedia/infraestructure/mappers/mapper.dart';
-import 'package:cinemapedia/infraestructure/models/models.dart';
+import 'package:cinemapedia/infrastructure/mappers/mapper.dart';
+import 'package:cinemapedia/infrastructure/models/models.dart';
 
 class MoviedbDatasource extends MoviesDatasource {
   final _dio = Dio(BaseOptions(
-      baseUrl: Environment.theMovieDbUrl,
-      queryParameters: {'api_key': Environment.theMovieDbKey, 'languague': Environment.languague}));
+      baseUrl: Environment.MOVIEDB_URL,
+      queryParameters: {'api_key': Environment.MOVIEDB_KEY, 'languague': Environment.LANGUAGUE}));
 
   @override
   Future<List<Movie>> getNowPlaying({int page = 1}) async {
@@ -41,15 +41,6 @@ class MoviedbDatasource extends MoviesDatasource {
     return _jsonToMovies(response.data);
   }
 
-  List<Movie> _jsonToMovies(Map<String, dynamic> json) {
-    final moviedbResponse = MoviedbResponse.fromJson(json);
-    final List<Movie> movies = moviedbResponse.results
-        .where((moviedb) => moviedb.posterPath != Environment.EMPTY)
-        .map(MovieMapper.movieToEntity)
-        .toList();
-    return movies;
-  }
-
   @override
   Future<Movie> getMovieById(String id) async {
     final response = await _dio.get('/movie/$id');
@@ -58,5 +49,36 @@ class MoviedbDatasource extends MoviesDatasource {
     final movieDetails = MovieDetails.fromJson(response.data);
     final Movie movie = MovieMapper.movieDetailsToEntity(movieDetails);
     return movie;
+  }
+
+  @override
+  Future<List<Movie>> getSimilarMovies(int movieId) async {
+    final response = await _dio.get('/movie/$movieId/similar');
+    return _jsonToMovies(response.data);
+  }
+
+  @override
+  Future<List<Video>> getYoutubeVideosById(int movieId) async {
+    final response = await _dio.get('/movie/$movieId/videos');
+    final moviedbVideosReponse = MoviedbVideosResponse.fromJson(response.data);
+    final videos = <Video>[];
+
+    for (final moviedbVideo in moviedbVideosReponse.results) {
+      if (moviedbVideo.site == 'YouTube') {
+        final video = VideoMapper.moviedbVideoToEntity(moviedbVideo);
+        videos.add(video);
+      }
+    }
+
+    return videos;
+  }
+
+  List<Movie> _jsonToMovies(Map<String, dynamic> json) {
+    final moviedbResponse = MoviedbResponse.fromJson(json);
+    final List<Movie> movies = moviedbResponse.results
+        .where((moviedb) => moviedb.posterPath != Environment.EMPTY)
+        .map(MovieMapper.movieToEntity)
+        .toList();
+    return movies;
   }
 }

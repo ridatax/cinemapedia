@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 class SlideHorizontal extends StatelessWidget {
   final Movie movie;
 
-  const SlideHorizontal({required this.movie});
+  const SlideHorizontal({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {

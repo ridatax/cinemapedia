@@ -3,17 +3,17 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:cinemapedia/domain/entities/entities.dart';
 import 'package:cinemapedia/presentation/widgets/widgets.dart';
 
-class FavoritesMasonry extends StatefulWidget {
+class MovieMasonry extends StatefulWidget {
   final List<Movie> movies;
   final VoidCallback? loadNextPage;
 
-  const FavoritesMasonry({super.key, required this.movies, this.loadNextPage});
+  const MovieMasonry({super.key, required this.movies, this.loadNextPage});
 
   @override
-  State<FavoritesMasonry> createState() => _MovieMasonryState();
+  State<MovieMasonry> createState() => _MovieMasonryState();
 }
 
-class _MovieMasonryState extends State<FavoritesMasonry> {
+class _MovieMasonryState extends State<MovieMasonry> {
   final scrollController = ScrollController();
 
   @override

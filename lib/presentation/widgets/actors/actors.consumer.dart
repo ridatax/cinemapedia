@@ -6,7 +6,7 @@ import 'package:cinemapedia/presentation/providers/providers.dart';
 class ActorsByMovie extends ConsumerWidget {
   final String movieId;
 
-  const ActorsByMovie({required this.movieId});
+  const ActorsByMovie({super.key, required this.movieId});
 
   @override
   Widget build(BuildContext context, ref) {

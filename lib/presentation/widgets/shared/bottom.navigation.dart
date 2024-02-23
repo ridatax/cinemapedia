@@ -11,7 +11,7 @@ class BottomNavigation extends StatelessWidget {
       case '/':
         return 0;
 
-      case '/categories':
+      case '/populars':
         return 1;
 
       case '/favorites':
@@ -28,7 +28,7 @@ class BottomNavigation extends StatelessWidget {
         context.go('/');
         break;
       case 1:
-        context.go('/');
+        context.go('/populars');
         break;
       case 2:
         context.go('/favorites');
@@ -47,7 +47,7 @@ class BottomNavigation extends StatelessWidget {
         onTap: (value) => onItemTapped(context, value),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home_max), label: 'Inicio'),
-          BottomNavigationBarItem(icon: Icon(Icons.label_outline), label: 'Categorías'),
+          BottomNavigationBarItem(icon: Icon(Icons.thumbs_up_down_outlined), label: 'Populares'),
           BottomNavigationBarItem(icon: Icon(Icons.favorite_outline), label: 'Favoritos')
         ]);
   }

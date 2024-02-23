@@ -1,2 +1,3 @@
-export 'home/favorites.view.dart';
-export 'home/home.view.dart';
+export 'movies/favorites.view.dart';
+export 'movies/home.view.dart';
+export 'movies/popular.view.dart';

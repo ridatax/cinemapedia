@@ -1,3 +1,4 @@
+import 'package:cinemapedia/config/constants/environment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -26,7 +27,7 @@ class CustomAppBar extends ConsumerWidget {
                 children: [
                   Icon(Icons.movie_outlined, color: colors.secondary),
                   const SizedBox(width: 5),
-                  Text('Cinemapedia', style: titleStyle),
+                  Text(Environment.APP_NAME, style: titleStyle),
                   const Spacer(),
                   IconButton(
                       onPressed: () {

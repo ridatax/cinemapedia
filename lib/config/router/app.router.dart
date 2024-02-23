@@ -5,8 +5,7 @@ import 'package:cinemapedia/presentation/views/views.dart';
 final appRouter = GoRouter(initialLocation: '/', routes: [
   // State-Preserving
   StatefulShellRoute.indexedStack(
-      builder: (context, state, navigationShell) =>
-          HomeScreen(childView: navigationShell),
+      builder: (context, state, navigationShell) => HomeScreen(childView: navigationShell),
       branches: [
         StatefulShellBranch(routes: <RouteBase>[
           GoRoute(
@@ -24,10 +23,13 @@ final appRouter = GoRouter(initialLocation: '/', routes: [
                     return MovieScreen(movieId: movieId);
                   },
                 ),
-              ]
-          )
-        ]),
-        StatefulShellBranch(routes: <RouteBase>[
+              ]),
+          GoRoute(
+            path: '/populars',
+            builder: (context, state) {
+              return const PopularView();
+            },
+          ),
           GoRoute(
             path: '/favorites',
             builder: (context, state) {

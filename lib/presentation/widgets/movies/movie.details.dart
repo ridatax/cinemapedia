@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cinemapedia/domain/entities/entities.dart';
-import 'package:cinemapedia/presentation/widgets/actors/actors.consumer.dart';
+import 'package:cinemapedia/presentation/widgets/widgets.dart';
 
 class MovieDetails extends StatelessWidget {
   final Movie movie;
@@ -15,54 +15,19 @@ class MovieDetails extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Imagen
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  movie.posterPath,
-                  width: size.width * 0.3,
-                ),
-              ),
+        //* Titulo, OverView y Rating
+        TitleAndOverview(movie: movie, size: size, textStyles: textStyles),
 
-              const SizedBox(width: 10),
-
-              // Descripción
-              SizedBox(
-                width: (size.width - 40) * 0.7,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(movie.title, style: textStyles.titleLarge),
-                    Text(movie.overview),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-
-        // Generos de la película
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: Wrap(
-            children: [
-              ...movie.genreIds.map((gender) => Container(
-                    margin: const EdgeInsets.only(right: 10),
-                    child: Chip(
-                      label: Text(gender),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                    ),
-                  ))
-            ],
-          ),
-        ),
+        //* Generos de la película
+        Genres(movie: movie),
 
         ActorsByMovie(movieId: movie.id.toString()),
+
+        //* Videos de la película (si tiene)
+        VideosFromMovie(movieId: movie.id),
+
+        //* Películas similares
+        SimilarMovies(movieId: movie.id),
 
         const SizedBox(height: 50),
       ],

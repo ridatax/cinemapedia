@@ -14,6 +14,7 @@ class PosterSliver extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isFavoriteFuture = ref.watch(isFavoriteProvider(movie.id));
     final size = MediaQuery.of(context).size;
+    final scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
 
     return SliverAppBar(
       backgroundColor: Colors.black,
@@ -34,7 +35,12 @@ class PosterSliver extends ConsumerWidget {
             ))
       ],
       flexibleSpace: FlexibleSpaceBar(
-        titlePadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        titlePadding: const EdgeInsets.only(bottom: 0),
+        title: CustomGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            stops: const [0.7, 1.0],
+            colors: [Colors.transparent, scaffoldBackgroundColor]),
         background: Stack(
           children: [
             SizedBox.expand(
@@ -51,12 +57,7 @@ class PosterSliver extends ConsumerWidget {
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                 stops: [0.0, 0.2],
-                colors: [Colors.transparent, Colors.black54]),
-            const CustomGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [0.7, 1.0],
-                colors: [Colors.transparent, Colors.black87]),
+                colors: [Colors.black54, Colors.transparent]),
             const CustomGradient(
                 begin: Alignment.topLeft,
                 stops: [0.0, 0.3],
